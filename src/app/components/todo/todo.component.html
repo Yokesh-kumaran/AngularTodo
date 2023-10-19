@@ -1,0 +1,76 @@
+<style>
+  .form-control:focus{
+    background-color: wheat;
+    box-shadow: 0 0 10px black;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div
+      class="col-6 mt-4 border border-dark rounded border-2 p-4"
+      style="background-color: deepskyblue"
+    >
+      <h1 class="text-center" style="color: rgb(20, 73, 219)">Registration</h1>
+      <div class="mt-2">
+        <input
+          type="text"
+          class="form-control mb-3"
+          [(ngModel)]="nameInput"
+          placeholder="Username"
+        />
+
+        <input
+          type="text"
+          class="form-control mb-3"
+          placeholder="Mobile Number"
+          [(ngModel)]="numberInput"
+        />
+
+        <input
+          type="text"
+          class="form-control mb-3"
+          placeholder="Mail Id"
+          [(ngModel)]="mailInput"
+        />
+
+        <button type="button" class="btn btn-primary" (click)="add()">
+          {{btnText | uppercase}}
+        </button>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<hr class="mt-4 border border-dark border-1" />
+
+<div class="container">
+  <h1 class="text-center" style="color: rgb(0, 0, 0)">
+    List of Registered members..
+  </h1>
+  <table class="table table-bordered border-dark border-1" style="background-color: rgb(189, 212, 227);">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email Id</th>
+        <th scope="col" class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let todo of todoArray">
+      <tr>
+        <td>{{ todo.name }}</td>
+        <td>{{ todo.phone }}</td>
+        <td>{{ todo.mail }}</td>
+        <td class="text-center">
+          <span>
+            <button type="button" class="btn btn-success me-3" (click)="edit(todo.id)">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="delete(todo.id)">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
